@@ -112,10 +112,11 @@
   supervisors: job-supervisors-centcom
   canBeAntag: false
   guides:
-  - NanotrasenRep SOP
-  - SOP
+  # Orion-Edit-Start
   - SpaceLaw
-  - Writing
+  - SOP
+  - SOP-Alerts
+  # Orion-Edit-End
   goobcoins: 40
   access:
   - Security
