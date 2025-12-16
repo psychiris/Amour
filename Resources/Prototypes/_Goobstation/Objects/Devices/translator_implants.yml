@@ -49,6 +49,11 @@
       - Mouse
       - Monkey
       - Kobold
+      # Orion-Start
+      - OldFastCodes
+      - CorporateCodespeak
+      - Codespeak
+      # Orion-End
 
     understood:
       - TauCetiBasic # Common Languages -
@@ -86,6 +91,11 @@
       - Mouse
       - Monkey
       - Kobold
+      # Orion-Start
+      - OldFastCodes
+      - CorporateCodespeak
+      - Codespeak
+      # Orion-End
 
 
 
