@@ -222,13 +222,12 @@
     price: 75
   - type: BlockWeather
   - type: SunShadowCast
-  # <Goobstation>
+  # Goobstation
   - type: Penetratable
     penetrateDamage: 50
     damagePenalty: 0.1
   - type: ExaminableDamage
     messages: WindowMessages
-  # </Goobstation>
 
 - type: entity
   abstract: true
@@ -276,9 +275,9 @@
   name: brick wall
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/brick.rsi # Amour
+    sprite: _Amour/Structures/Walls/brick.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/brick.rsi # Amour
+    sprite: _Amour/Structures/Walls/brick.rsi
   - type: RCDDeconstructable
     cost: 6
     delay: 8
@@ -310,9 +309,9 @@
   name: clock wall
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/clock.rsi # Amour
+    sprite: _Amour/Structures/Walls/clock.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/clock.rsi # Amour
+    sprite: _Amour/Structures/Walls/clock.rsi
   - type: Construction
     graph: ClockworkGirder
     node: clockworkWall
@@ -343,9 +342,9 @@
   name: bananium wall
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/clown.rsi # Amour
+    sprite: _Amour/Structures/Walls/clown.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/clown.rsi # Amour
+    sprite: _Amour/Structures/Walls/clown.rsi
   - type: Construction
     graph: Girder
     node: bananiumWall
@@ -398,9 +397,9 @@
       - Wall
       - Structure
   - type: Sprite
-    sprite: _Amour/Structures/Walls/meat.rsi # Amour
+    sprite: _Amour/Structures/Walls/meat.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/meat.rsi # Amour
+    sprite: _Amour/Structures/Walls/meat.rsi
   - type: Construction
     graph: Girder
     node: meatWall
@@ -427,9 +426,9 @@
   name: cult wall
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/cult.rsi # Amour
+    sprite: _Amour/Structures/Walls/cult.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/cult.rsi # Amour
+    sprite: _Amour/Structures/Walls/cult.rsi
   - type: Destructible
     thresholds:
     - trigger:
@@ -460,9 +459,9 @@
       - Wall
       - Debug
   - type: Sprite
-    sprite: _Amour/Structures/Walls/debug.rsi # Amour
+    sprite: _Amour/Structures/Walls/debug.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/debug.rsi # Amour
+    sprite: _Amour/Structures/Walls/debug.rsi
   - type: Destructible
     thresholds:
     - trigger:
@@ -488,9 +487,9 @@
   name: diamond wall
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/diamond.rsi # Amour
+    sprite: _Amour/Structures/Walls/diamond.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/diamond.rsi # Amour
+    sprite: _Amour/Structures/Walls/diamond.rsi
   - type: RCDDeconstructable
     cost: 6
     delay: 8
@@ -522,9 +521,9 @@
   name: gold wall
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/gold.rsi # Amour
+    sprite: _Amour/Structures/Walls/gold.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/gold.rsi # Amour
+    sprite: _Amour/Structures/Walls/gold.rsi
   - type: Construction
     graph: Girder
     node: goldWall
@@ -579,9 +578,9 @@
   name: ice wall
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/ice.rsi # Amour
+    sprite: _Amour/Structures/Walls/ice.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/ice.rsi # Amour
+    sprite: _Amour/Structures/Walls/ice.rsi
   - type: Destructible
     thresholds:
     - trigger:
@@ -609,9 +608,9 @@
   name: plasma wall
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/plasma.rsi # Amour
+    sprite: _Amour/Structures/Walls/plasma.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/plasma.rsi # Amour
+    sprite: _Amour/Structures/Walls/plasma.rsi
   - type: Construction
     graph: Girder
     node: plasmaWall
@@ -645,7 +644,7 @@
     key: walls
     base: plasma
   - type: RadiationBlocker
-    resistance: 10 # Goobstation - Radiation Overhaul
+    resistance: 10
   - type: CosmicCorruptible # DeltaV - Cosmic Cult
     convertTo: WallCosmicCult
 
@@ -655,9 +654,9 @@
   name: plastic wall
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/plastic.rsi # Amour
+    sprite: _Amour/Structures/Walls/plastic.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/plastic.rsi # Amour
+    sprite: _Amour/Structures/Walls/plastic.rsi
   - type: Construction
     graph: Girder
     node: plasticWall
@@ -700,9 +699,9 @@
   suffix: indestructible
   components:
     - type: Sprite
-      sprite: _Amour/Structures/Walls/plastitanium.rsi # Amour
+      sprite: _Amour/Structures/Walls/plastitanium.rsi
     - type: Icon
-      sprite: _Amour/Structures/Walls/plastitanium.rsi # Amour
+      sprite: _Amour/Structures/Walls/plastitanium.rsi
     - type: IconSmooth
       key: walls
       base: plastitanium
@@ -761,10 +760,10 @@
   components:
   - type: Sprite
     drawdepth: Walls
-    sprite: _Amour/Structures/Walls/plastitanium_diagonal.rsi # Amour
+    sprite: _Amour/Structures/Walls/plastitanium_diagonal.rsi
     state: state0
   - type: Icon
-    sprite: _Amour/Structures/Walls/plastitanium_diagonal.rsi # Amour
+    sprite: _Amour/Structures/Walls/plastitanium_diagonal.rsi
     state: state0
   - type: Damageable
     damageContainer: StructuralInorganic
@@ -780,10 +779,10 @@
   components:
   - type: Sprite
     drawdepth: Walls
-    sprite: _Amour/Structures/Walls/plastitanium_diagonal.rsi # Amour
+    sprite: _Amour/Structures/Walls/plastitanium_diagonal.rsi
     state: state0
   - type: Icon
-    sprite: _Amour/Structures/Walls/plastitanium_diagonal.rsi # Amour
+    sprite: _Amour/Structures/Walls/plastitanium_diagonal.rsi
     state: state0
   - type: Destructible
     thresholds:
@@ -808,9 +807,9 @@
   name: reinforced wall
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/solid.rsi # Amour
+    sprite: _Amour/Structures/Walls/solid.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/solid.rsi # Amour
+    sprite: _Amour/Structures/Walls/solid.rsi
     state: rgeneric
   - type: Construction
     graph: Girder
@@ -871,35 +870,11 @@
         layer:
         - WallLayer
         density: 2000
-  # <Goobstation>
-  - type: RustRequiresPathStage
+  - type: RustRequiresPathStage # Goobstation
     pathStage: 7 # Toxic blade
-  - type: Penetratable
+  - type: Penetratable # Goobstation - Better snipers
     penetrateDamage: 100
     damagePenalty: 0.25
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 40
-  - type: RefillableSolution
-    solution: food
-  - type: DrainableSolution
-    solution: food
-  - type: ExaminableSolution
-    solution: food
-  - type: DrawableSolution
-    solution: food
-  - type: InjectableSolution
-    solution: food
-  - type: Edible
-  - type: Food
-  - type: FlavorProfile
-    flavors:
-      - chalky
-  - type: SolutionTransfer
-    canChangeTransferAmount: true
-    maxTransferAmount: 40
-  # </Goobstation>
   - type: CosmicCorruptible # DeltaV - Cosmic Cult
     convertTo: WallCosmicCult
 
@@ -909,9 +884,9 @@
   suffix: rusted
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/solid_rust.rsi # Amour
+    sprite: _Amour/Structures/Walls/solid_rust.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/solid_rust.rsi # Amour
+    sprite: _Amour/Structures/Walls/solid_rust.rsi
     state: rgeneric
   - type: Construction
     graph: Girder
@@ -956,10 +931,10 @@
     - Diagonal
   - type: Sprite
     drawdepth: Walls
-    sprite: _Amour/Structures/Walls/reinforced_diagonal.rsi # Amour
+    sprite: _Amour/Structures/Walls/reinforced_diagonal.rsi
     state: state0
   - type: Icon
-    sprite: _Amour/Structures/Walls/reinforced_diagonal.rsi # Amour
+    sprite: _Amour/Structures/Walls/reinforced_diagonal.rsi
     state: state0
   - type: Damageable
     damageContainer: StructuralInorganic
@@ -998,9 +973,9 @@
   name: riveted wall
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/riveted.rsi # Amour
+    sprite: _Amour/Structures/Walls/riveted.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/riveted.rsi # Amour
+    sprite: _Amour/Structures/Walls/riveted.rsi
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrong
@@ -1034,9 +1009,9 @@
   name: sandstone wall
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/sandstone.rsi # Amour
+    sprite: _Amour/Structures/Walls/sandstone.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/sandstone.rsi # Amour
+    sprite: _Amour/Structures/Walls/sandstone.rsi
   - type: RCDDeconstructable
     cost: 6
     delay: 8
@@ -1064,9 +1039,9 @@
   name: silver wall
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/silver.rsi # Amour
+    sprite: _Amour/Structures/Walls/silver.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/silver.rsi # Amour
+    sprite: _Amour/Structures/Walls/silver.rsi
   - type: Construction
     graph: Girder
     node: silverWall
@@ -1110,10 +1085,10 @@
   components:
   - type: Sprite
     drawdepth: Walls
-    sprite: _Amour/Structures/Walls/shuttle_diagonal.rsi # Amour
+    sprite: _Amour/Structures/Walls/shuttle_diagonal.rsi
     state: state0
   - type: Icon
-    sprite: _Amour/Structures/Walls/shuttle_diagonal.rsi # Amour
+    sprite: _Amour/Structures/Walls/shuttle_diagonal.rsi
     state: state0
   - type: Reflect
     reflectProb: 1
@@ -1212,9 +1187,9 @@
   - type: RadiationBlocker
     resistance: 5
   - type: Sprite
-    sprite: _Amour/Structures/Walls/shuttle.rsi # Amour
+    sprite: _Amour/Structures/Walls/shuttle.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/shuttle.rsi # Amour
+    sprite: _Amour/Structures/Walls/shuttle.rsi
     state: full
   - type: Construction
     graph: Girder
@@ -1261,13 +1236,13 @@
   name: solid wall
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/solid.rsi # Amour
+    sprite: _Amour/Structures/Walls/solid.rsi
   - type: WallReplacementMarker
   - type: Construction
     graph: Girder
     node: wall
   - type: Icon
-    sprite: _Amour/Structures/Walls/solid.rsi # Amour
+    sprite: _Amour/Structures/Walls/solid.rsi
   - type: RCDDeconstructable
     cost: 6
     delay: 8
@@ -1307,10 +1282,10 @@
   components:
   - type: Sprite
     drawdepth: Walls
-    sprite: _Amour/Structures/Walls/solid_diagonal.rsi # Amour
+    sprite: _Amour/Structures/Walls/solid_diagonal.rsi
     state: state0
   - type: Icon
-    sprite: _Amour/Structures/Walls/solid_diagonal.rsi # Amour
+    sprite: _Amour/Structures/Walls/solid_diagonal.rsi
     state: state0
   - type: Destructible
     thresholds:
@@ -1341,9 +1316,9 @@
   suffix: rusted
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/solid_rust.rsi # Amour
+    sprite: _Amour/Structures/Walls/solid_rust.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/solid_rust.rsi # Amour
+    sprite: _Amour/Structures/Walls/solid_rust.rsi
     state: full
   - type: Construction
     graph: Girder
@@ -1383,9 +1358,9 @@
   name: uranium wall
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/uranium.rsi # Amour
+    sprite: _Amour/Structures/Walls/uranium.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/uranium.rsi # Amour
+    sprite: _Amour/Structures/Walls/uranium.rsi
   - type: Construction
     graph: Girder
     node: uraniumWall
@@ -1426,29 +1401,7 @@
     key: walls
     base: uranium
   - type: RadiationBlocker
-    resistance: 20 # Goobstation - Radiation Overhaul
-  - type: SolutionContainerManager # Goobstation
-    solutions:
-      food:
-        maxVol: 40
-  - type: RefillableSolution
-    solution: food
-  - type: DrainableSolution
-    solution: food
-  - type: ExaminableSolution
-    solution: food
-  - type: DrawableSolution
-    solution: food
-  - type: InjectableSolution
-    solution: food
-  - type: Edible
-  - type: Food
-  - type: FlavorProfile
-    flavors:
-      - chalky
-  - type: SolutionTransfer
-    canChangeTransferAmount: true
-    maxTransferAmount: 40
+    resistance: 20
   - type: CosmicCorruptible # DeltaV - Cosmic Cult
     convertTo: WallCosmicCult
 
@@ -1459,9 +1412,9 @@
   description: The traditional greytide defense.
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/wood.rsi # Amour
+    sprite: _Amour/Structures/Walls/wood.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/wood.rsi # Amour
+    sprite: _Amour/Structures/Walls/wood.rsi
   - type: Construction
     graph: Barricade
     node: woodWall
@@ -1507,9 +1460,9 @@
   - type: Damageable
     damageModifierSet: Web
   - type: Sprite
-    sprite: _Amour/Structures/Walls/web.rsi # Amour
+    sprite: _Amour/Structures/Walls/web.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/web.rsi # Amour
+    sprite: _Amour/Structures/Walls/web.rsi
   - type: Destructible
     thresholds:
     - trigger: # Excess damage, don't spawn entities
@@ -1551,9 +1504,9 @@
   name: stone wall
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/necropolis.rsi # Amour
+    sprite: _Amour/Structures/Walls/necropolis.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/necropolis.rsi # Amour
+    sprite: _Amour/Structures/Walls/necropolis.rsi
   - type: Destructible
     thresholds:
     - trigger:
@@ -1576,9 +1529,9 @@
   name: mining wall
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/mining.rsi # Amour
+    sprite: _Amour/Structures/Walls/mining.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/mining.rsi # Amour
+    sprite: _Amour/Structures/Walls/mining.rsi
   - type: Destructible
     thresholds:
     - trigger:
@@ -1607,10 +1560,10 @@
   components:
   - type: Sprite
     drawdepth: Walls
-    sprite: _Amour/Structures/Walls/mining_diagonal.rsi # Amour
+    sprite: _Amour/Structures/Walls/mining_diagonal.rsi
     state: state0
   - type: Icon
-    sprite: _Amour/Structures/Walls/mining_diagonal.rsi # Amour
+    sprite: _Amour/Structures/Walls/mining_diagonal.rsi
     state: state0
   - type: Damageable
     damageContainer: StructuralInorganic
@@ -1651,10 +1604,10 @@
   description: A mysterious ornate looking wall. There may be ancient dangers inside.
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/vault.rsi # Amour
+    sprite: _Amour/Structures/Walls/vault.rsi
     state: alienvault
   - type: Icon
-    sprite: _Amour/Structures/Walls/vault.rsi # Amour
+    sprite: _Amour/Structures/Walls/vault.rsi
     state: alienvault
   - type: Destructible
     thresholds:
@@ -1675,10 +1628,10 @@
   name: rock vault wall
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/vault.rsi # Amour
+    sprite: _Amour/Structures/Walls/vault.rsi
     state: rockvault
   - type: Icon
-    sprite: _Amour/Structures/Walls/vault.rsi # Amour
+    sprite: _Amour/Structures/Walls/vault.rsi
     state: rockvault
 
 - type: entity
@@ -1687,10 +1640,10 @@
   name: sandstone vault wall
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/vault.rsi # Amour
+    sprite: _Amour/Structures/Walls/vault.rsi
     state: sandstonevault
   - type: Icon
-    sprite: _Amour/Structures/Walls/vault.rsi # Amour
+    sprite: _Amour/Structures/Walls/vault.rsi
     state: sandstonevault
 
 # Mime
@@ -1791,9 +1744,9 @@
   description: Stone by stone, perfectly fitted together to form a wall.
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/cobblebrick.rsi # Amour
+    sprite: _Amour/Structures/Walls/cobblebrick.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/cobblebrick.rsi # Amour
+    sprite: _Amour/Structures/Walls/cobblebrick.rsi
   - type: RCDDeconstructable
     cost: 6
     delay: 8
@@ -1818,9 +1771,9 @@
   name: basalt brick wall
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/cobblebrick_basalt.rsi # Amour
+    sprite: _Amour/Structures/Walls/cobblebrick_basalt.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/cobblebrick_basalt.rsi # Amour
+    sprite: _Amour/Structures/Walls/cobblebrick_basalt.rsi
   - type: IconSmooth
     key: cobblebricks
     base: cobblebrick
@@ -1832,9 +1785,9 @@
   description: A cold, not-so-impenetrable wall.
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/cobblebrick_snow.rsi # Amour
+    sprite: _Amour/Structures/Walls/cobblebrick_snow.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/cobblebrick_snow.rsi # Amour
+    sprite: _Amour/Structures/Walls/cobblebrick_snow.rsi
   - type: IconSmooth
     key: cobblebricks
     base: cobblebrick
@@ -1845,9 +1798,9 @@
   name: asteroid stone brick wall
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/cobblebrick_asteroid.rsi # Amour
+    sprite: _Amour/Structures/Walls/cobblebrick_asteroid.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/cobblebrick_asteroid.rsi # Amour
+    sprite: _Amour/Structures/Walls/cobblebrick_asteroid.rsi
   - type: IconSmooth
     key: cobblebricks
     base: cobblebrick
@@ -1858,9 +1811,9 @@
   name: sandstone brick wall
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/cobblebrick_sand.rsi # Amour
+    sprite: _Amour/Structures/Walls/cobblebrick_sand.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/cobblebrick_sand.rsi # Amour
+    sprite: _Amour/Structures/Walls/cobblebrick_sand.rsi
   - type: IconSmooth
     key: cobblebricks
     base: cobblebrick
@@ -1871,9 +1824,9 @@
   name: chromite brick wall
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/cobblebrick_chromite.rsi # Amour
+    sprite: _Amour/Structures/Walls/cobblebrick_chromite.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/cobblebrick_chromite.rsi # Amour
+    sprite: _Amour/Structures/Walls/cobblebrick_chromite.rsi
   - type: IconSmooth
     key: cobblebricks
     base: cobblebrick
@@ -1884,9 +1837,9 @@
   name: andesite brick wall
   components:
   - type: Sprite
-    sprite: _Amour/Structures/Walls/cobblebrick_andesite.rsi # Amour
+    sprite: _Amour/Structures/Walls/cobblebrick_andesite.rsi
   - type: Icon
-    sprite: _Amour/Structures/Walls/cobblebrick_andesite.rsi # Amour
+    sprite: _Amour/Structures/Walls/cobblebrick_andesite.rsi
   - type: IconSmooth
     key: cobblebricks
     base: cobblebrick
