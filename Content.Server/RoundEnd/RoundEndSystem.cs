@@ -109,6 +109,8 @@ namespace Content.Server.RoundEnd
         public TimeSpan AutoCallStartTime;
         private bool _autoCalledBefore;
 
+        public bool IsForcedCall { get; private set; } = false;
+
         public override void Initialize()
         {
             base.Initialize();
@@ -137,8 +139,10 @@ namespace Content.Server.RoundEnd
 
             LastCountdownStart = null;
             ExpectedCountdownEnd = null;
+            IsForcedCall = false;
             SetAutoCallTime();
             _autoCalledBefore = false;
+            IsForcedCall = false;
             RaiseLocalEvent(RoundEndSystemChangedEvent.Default);
         }
 
@@ -166,7 +170,7 @@ namespace Content.Server.RoundEnd
 
         public bool CanCallOrRecall()
         {
-            return _cooldownTokenSource == null;
+            return _cooldownTokenSource == null && !IsForcedCall;
         }
 
         public bool IsRoundEndRequested()
@@ -174,7 +178,7 @@ namespace Content.Server.RoundEnd
             return _countdownTokenSource != null;
         }
 
-        public void RequestRoundEnd(EntityUid? requester = null, bool checkCooldown = true, string text = "round-end-system-shuttle-called-announcement", string name = "round-end-system-shuttle-sender-announcement")
+        public void RequestRoundEnd(EntityUid? requester = null, bool checkCooldown = true, string text = "round-end-system-shuttle-called-announcement", string name = "round-end-system-shuttle-sender-announcement", bool isForcedCall = false)
         {
             var duration = DefaultCountdownDuration;
 
@@ -189,10 +193,10 @@ namespace Content.Server.RoundEnd
                 }
             }
 
-            RequestRoundEnd(duration, requester, checkCooldown, text, name);
+            RequestRoundEnd(duration, requester, checkCooldown, text, name, isForcedCall);
         }
 
-        public void RequestRoundEnd(TimeSpan countdownTime, EntityUid? requester = null, bool checkCooldown = true, string text = "round-end-system-shuttle-called-announcement", string name = "round-end-system-shuttle-sender-announcement")
+        public void RequestRoundEnd(TimeSpan countdownTime, EntityUid? requester = null, bool checkCooldown = true, string text = "round-end-system-shuttle-called-announcement", string name = "round-end-system-shuttle-sender-announcement", bool isForcedCall = false)
         {
             if (_gameTicker.RunLevel != GameRunLevel.InRound)
                 return;
@@ -241,6 +245,7 @@ namespace Content.Server.RoundEnd
 
             LastCountdownStart = _gameTiming.CurTime;
             ExpectedCountdownEnd = _gameTiming.CurTime + countdownTime;
+            IsForcedCall = isForcedCall;
 
             // TODO full game saves
             Timer.Spawn(countdownTime, _shuttle.DockEmergencyShuttle, _countdownTokenSource.Token);
@@ -315,6 +320,7 @@ namespace Content.Server.RoundEnd
             if (_gameTicker.RunLevel != GameRunLevel.InRound) return;
             LastCountdownStart = null;
             ExpectedCountdownEnd = null;
+            IsForcedCall = false;
             RaiseLocalEvent(RoundEndSystemChangedEvent.Default);
             _gameTicker.EndRound();
             _countdownTokenSource?.Cancel();
@@ -379,6 +385,7 @@ namespace Content.Server.RoundEnd
 
         private void AfterEndRoundRestart()
         {
+            IsForcedCall = false;
             if (_gameTicker.RunLevel != GameRunLevel.PostRound) return;
             Reset();
             _gameTicker.RestartRound();

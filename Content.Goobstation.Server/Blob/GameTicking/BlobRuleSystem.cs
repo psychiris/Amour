@@ -124,7 +124,7 @@ public sealed class BlobRuleSystem : GameRuleSystem<BlobRuleComponent>
         var stationName = Name(stationUid);
 
         if (blobTilesCount >= (stationUid.Comp?.StageBegin ?? StationBlobConfigComponent.DefaultStageBegin)
-            && _roundEndSystem.ExpectedCountdownEnd != null)
+            && _roundEndSystem.ExpectedCountdownEnd != null && !_roundEndSystem.IsForcedCall)
         {
             _roundEndSystem.CancelRoundEndCountdown(checkCooldown: false);
             _chatSystem.DispatchStationAnnouncement(stationUid,
