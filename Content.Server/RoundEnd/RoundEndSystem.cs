@@ -109,7 +109,7 @@ namespace Content.Server.RoundEnd
         public TimeSpan AutoCallStartTime;
         private bool _autoCalledBefore;
 
-        public bool IsForcedCall { get; private set; } = false;
+        public bool IsForcedCall { get; private set; } = false; // Amour
 
         public override void Initialize()
         {
@@ -139,10 +139,9 @@ namespace Content.Server.RoundEnd
 
             LastCountdownStart = null;
             ExpectedCountdownEnd = null;
-            IsForcedCall = false;
+            IsForcedCall = false; // Amour
             SetAutoCallTime();
             _autoCalledBefore = false;
-            IsForcedCall = false;
             RaiseLocalEvent(RoundEndSystemChangedEvent.Default);
         }
 
@@ -170,7 +169,7 @@ namespace Content.Server.RoundEnd
 
         public bool CanCallOrRecall()
         {
-            return _cooldownTokenSource == null && !IsForcedCall;
+            return _cooldownTokenSource == null && !IsForcedCall; // Amour
         }
 
         public bool IsRoundEndRequested()
@@ -178,7 +177,7 @@ namespace Content.Server.RoundEnd
             return _countdownTokenSource != null;
         }
 
-        public void RequestRoundEnd(EntityUid? requester = null, bool checkCooldown = true, string text = "round-end-system-shuttle-called-announcement", string name = "round-end-system-shuttle-sender-announcement", bool isForcedCall = false)
+        public void RequestRoundEnd(EntityUid? requester = null, bool checkCooldown = true, string text = "round-end-system-shuttle-called-announcement", string name = "round-end-system-shuttle-sender-announcement", bool isForcedCall = false) // Amour
         {
             var duration = DefaultCountdownDuration;
 
@@ -193,10 +192,10 @@ namespace Content.Server.RoundEnd
                 }
             }
 
-            RequestRoundEnd(duration, requester, checkCooldown, text, name, isForcedCall);
+            RequestRoundEnd(duration, requester, checkCooldown, text, name, isForcedCall); // Amour
         }
 
-        public void RequestRoundEnd(TimeSpan countdownTime, EntityUid? requester = null, bool checkCooldown = true, string text = "round-end-system-shuttle-called-announcement", string name = "round-end-system-shuttle-sender-announcement", bool isForcedCall = false)
+        public void RequestRoundEnd(TimeSpan countdownTime, EntityUid? requester = null, bool checkCooldown = true, string text = "round-end-system-shuttle-called-announcement", string name = "round-end-system-shuttle-sender-announcement", bool isForcedCall = false) // Amour
         {
             if (_gameTicker.RunLevel != GameRunLevel.InRound)
                 return;
@@ -245,7 +244,7 @@ namespace Content.Server.RoundEnd
 
             LastCountdownStart = _gameTiming.CurTime;
             ExpectedCountdownEnd = _gameTiming.CurTime + countdownTime;
-            IsForcedCall = isForcedCall;
+            IsForcedCall = isForcedCall; // Amour
 
             // TODO full game saves
             Timer.Spawn(countdownTime, _shuttle.DockEmergencyShuttle, _countdownTokenSource.Token);
@@ -320,7 +319,7 @@ namespace Content.Server.RoundEnd
             if (_gameTicker.RunLevel != GameRunLevel.InRound) return;
             LastCountdownStart = null;
             ExpectedCountdownEnd = null;
-            IsForcedCall = false;
+            IsForcedCall = false; // Amour
             RaiseLocalEvent(RoundEndSystemChangedEvent.Default);
             _gameTicker.EndRound();
             _countdownTokenSource?.Cancel();
