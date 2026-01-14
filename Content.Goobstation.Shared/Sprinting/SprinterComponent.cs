@@ -27,13 +27,13 @@ public sealed partial class SprinterComponent : Component
     ///     Does the entity scale their stamina drain with their stamina modifiers?
     /// </summary>
     [DataField, AutoNetworkedField]
-    public bool ScaleWithStamina = false;
+    public bool ScaleWithStamina = true;
 
     /// <summary>
     ///     Can the entity sprint?
     /// </summary>
     [DataField, AutoNetworkedField]
-    public bool CanSprint = false;
+    public bool CanSprint = true;
 
     /// <summary>
     ///     How much stamina is drained per second?
