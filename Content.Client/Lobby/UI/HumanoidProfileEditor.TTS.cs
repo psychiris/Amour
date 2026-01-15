@@ -2,6 +2,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Client._Amour.TTS;
 using Content.Shared._Amour.TTS;
 using System.Linq;
 
@@ -58,8 +59,7 @@ public sealed partial class HumanoidProfileEditor
         if (Profile is null)
             return;
 
-        // TODO: Implement TTS preview playback
-        // var ev = new PreviewTTSEvent(Profile.Voice);
-        // _entManager.EventBus.RaiseEvent(EventSource.Local, ref ev);
+        var ttsSystem = _entManager.System<TTSSystem>();
+        ttsSystem.RequestGlobalTTS(VoiceRequestType.Preview, Profile.Voice);
     }
 }

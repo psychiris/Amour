@@ -57,7 +57,7 @@ public sealed class WhiteCVars
     /// If the TTS system is enabled or not.
     /// </summary>
     public static readonly CVarDef<bool> TtsEnabled =
-        CVarDef.Create("tts.enabled", true, CVar.SERVERONLY);
+        CVarDef.Create("tts.enabled", true, CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
     /// URL of the TTS server API (e.g., "https://ntts.fdev.team/api/v1/tts").

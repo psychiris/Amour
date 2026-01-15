@@ -186,7 +186,7 @@ namespace Content.Server.Entry
         private IWatchlistWebhookManager _watchlistWebhookManager = default!;
         private IConnectionManager? _connectionManager;
         private LastRolledAntagManager? _lastAntagManager; // Goobstation
-        private TTSManager _ttsManager = default!; // Amour
+        private TTSManager _ttsManager = default!; // Amour - TTS
 
         /// <inheritdoc />
         public override void Init()
@@ -235,7 +235,7 @@ namespace Content.Server.Entry
                 _sysMan = IoCManager.Resolve<IEntitySystemManager>();
                 _dbManager = IoCManager.Resolve<IServerDbManager>();
                 _watchlistWebhookManager = IoCManager.Resolve<IWatchlistWebhookManager>();
-                _ttsManager = IoCManager.Resolve<TTSManager>(); // Amour
+                _ttsManager = IoCManager.Resolve<TTSManager>(); // Amour - TTS
 
                 logManager.GetSawmill("Storage").Level = LogLevel.Info;
                 logManager.GetSawmill("db.ef").Level = LogLevel.Info;

@@ -105,7 +105,7 @@ public sealed partial class TTSSystem : EntitySystem
         if (obfuscated is null)
             return;
 
-        // TODO: Check obstacles
+        // TODO: Check obstacles between speaker and listener for whisper audio muffling
         var xformQuery = GetEntityQuery<TransformComponent>();
         var sourcePos = _xforms.GetWorldPosition(xformQuery.GetComponent(uid), xformQuery);
         var nilter = Filter.Empty();
@@ -145,25 +145,16 @@ public sealed partial class TTSSystem : EntitySystem
         if (char.IsLetter(textSanitized[^1]))
             textSanitized += ".";
 
-        var ssmlTraits = SoundTraits.RateFast;
-        if (isWhisper)
-            ssmlTraits = SoundTraits.PitchVerylow;
-
-        var textSsml = ToSsmlText(textSanitized, ssmlTraits);
-
-        // Создаем уникальный ключ на основе всех аргументов
         var taskKey = $"{textSanitized}_{speaker}_{isWhisper}";
 
-        // Блокируем доступ к словарю, чтобы избежать гонки
         await _lock.WaitAsync();
         try
         {
-            // Если задача уже выполняется для этого набора аргументов, ждем её завершения
             if (_ttsTasks.TryGetValue(taskKey, out var existingTask))
                 return await existingTask;
 
-            // Создаем задачу и сохраняем её в словарь
-            var newTask = _ttsManager.ConvertTextToSpeech(speaker, textSsml);
+            // Note: ntts.fdev.team API does not support SSML, so we send plain text
+            var newTask = _ttsManager.ConvertTextToSpeech(speaker, textSanitized);
             _ttsTasks[taskKey] = newTask;
         }
         finally
@@ -173,12 +164,10 @@ public sealed partial class TTSSystem : EntitySystem
 
         try
         {
-            // Ожидаем завершения задачи
             return await _ttsTasks[taskKey];
         }
         finally
         {
-            // Удаляем задачу из словаря независимо от результата
             await _lock.WaitAsync();
             try
             {

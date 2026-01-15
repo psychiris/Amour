@@ -24,17 +24,17 @@ public sealed class BarkSystem : EntitySystem
 
     private readonly List<ActiveBark> _activeBarks = new();
 
-    private bool _barksEnabled = true; // Amour
+    private bool _barksEnabled = true; // Amour - TTS toggle
 
     public override void Initialize()
     {
         base.Initialize();
-        _cfg.OnValueChanged(WhiteCVars.VoiceType, OnVoiceTypeChanged, true); // Amour 
+        _cfg.OnValueChanged(WhiteCVars.VoiceType, OnVoiceTypeChanged, true); // Amour - TTS toggle
         SubscribeNetworkEvent<PlayBarkEvent>(OnPlayBark);
         SubscribeLocalEvent<PreviewBarkEvent>(OnPreviewBark);
     }
 
-    // Amour begin
+    // Amour - TTS toggle Start
     public override void Shutdown()
     {
         base.Shutdown();
@@ -45,7 +45,7 @@ public sealed class BarkSystem : EntitySystem
     {
         _barksEnabled = voiceType == CharacterVoiceType.Barks;
     }
-    // Amour end
+    // Amour - TTS toggle End
 
     public void OnPreviewBark(PreviewBarkEvent ev)
     {
@@ -63,7 +63,7 @@ public sealed class BarkSystem : EntitySystem
 
     private void OnPlayBark(PlayBarkEvent ev)
     {
-        if (!_barksEnabled) // Amour
+        if (!_barksEnabled) // Amour - TTS toggle
             return;
 
         var sourceEntity = GetEntity(ev.SourceUid);

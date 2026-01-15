@@ -108,7 +108,7 @@ public sealed partial class AudioTab : Control
             SliderVolumeTTS,
             scale: ContentAudioSystem.MasterVolumeMultiplier);
 
-        InitializeVoiceTypeSelector(); // Amour
+        InitializeVoiceTypeSelector(); // Amour - TTS
 
         Control.AddOptionPercentSlider(
             CVars.MidiVolume,
@@ -183,7 +183,7 @@ public sealed partial class AudioTab : Control
         _audio.SetMasterGain(value);
     }
 
-    // Amour
+    // Amour - TTS Start
     private void InitializeVoiceTypeSelector()
     {
         VoiceTypeSelector.AddItem(Loc.GetString("ui-options-voice-type-barks"), (int)CharacterVoiceType.Barks);
@@ -191,8 +191,10 @@ public sealed partial class AudioTab : Control
 
         Control.AddOption(new OptionVoiceType(Control, _cfg, VoiceTypeSelector));
     }
+    // Amour - TTS End
 }
 
+// Amour - TTS Start
 /// <summary>
 /// Custom option for VoiceType enum with OptionButton control.
 /// </summary>
@@ -245,3 +247,4 @@ public sealed class OptionVoiceType : BaseOption
         return Value != WhiteCVars.VoiceType.DefaultValue;
     }
 }
+// Amour - TTS End

@@ -43,11 +43,11 @@ public sealed class TTSManager
     private ISawmill _sawmill = default!;
 
     private readonly Dictionary<string, byte[]> _cache = new();
-    private readonly HashSet<string> _cacheKeysSeq = new();
+    private readonly LinkedList<string> _cacheKeysSeq = new(); // Use LinkedList to maintain insertion order for FIFO eviction
     private int _maxCachedCount = 200;
 
     public IReadOnlyDictionary<string, byte[]> Cache => _cache;
-    public IReadOnlyCollection<string> CacheKeysSeq => _cacheKeysSeq;
+    public IReadOnlyCollection<string> CacheKeysSeq => _cacheKeysSeq; // Ordered from oldest to newest
     public int MaxCachedCount
     {
         get => _maxCachedCount;
@@ -152,15 +152,15 @@ public sealed class TTSManager
             }
 
             // Add to cache
-            _cache.TryAdd(cacheKey, soundData);
-            _cacheKeysSeq.Add(cacheKey);
+            if (_cache.TryAdd(cacheKey, soundData))
+                _cacheKeysSeq.AddLast(cacheKey);
 
-            // Evict old cache entries
-            while (_cache.Count > _maxCachedCount && _cacheKeysSeq.Count > 0)
+            // Evict old cache entries (FIFO)
+            while (_cache.Count > _maxCachedCount && _cacheKeysSeq.First != null)
             {
-                var oldestKey = _cacheKeysSeq.First();
+                var oldestKey = _cacheKeysSeq.First.Value;
                 _cache.Remove(oldestKey);
-                _cacheKeysSeq.Remove(oldestKey);
+                _cacheKeysSeq.RemoveFirst();
             }
 
             _sawmill.Debug($"Generated new audio for '{text}' speech by '{speaker}' speaker ({soundData.Length} bytes)");
