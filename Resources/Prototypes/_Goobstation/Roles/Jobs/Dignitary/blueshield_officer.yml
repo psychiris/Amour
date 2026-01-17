@@ -44,14 +44,6 @@
       time: 45000 #12.50 hrs # Amour
     - !type:AgeRequirement
       requiredAge: 21
-    - !type:SpeciesRequirement # Amour
-      species:
-      - Human
-      - Chitinid
-      - Yowie
-      - Dwarf
-      - SlimePerson
-      - Reptilian
 #  guides: # Orion-Edit: Removed because dont have this SOP
 #  - BlueshieldOfficer SOP
 #  - Command

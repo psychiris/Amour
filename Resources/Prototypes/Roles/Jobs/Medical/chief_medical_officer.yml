@@ -145,12 +145,8 @@
     - !type:DepartmentTimeRequirement
       department: Medical
       time: 18000 #5 hrs # Amour
-    - !type:SpeciesRequirement # Amour
-      species:
-      - Human
-      - Felinid
-      - Moth
-      - SlimePerson
+    - !type:AgeRequirement # Amour
+      requiredAge: 23
   startingGear: CMOGear
   icon: "JobIconChiefMedicalOfficer"
   supervisors: job-supervisors-captain

@@ -152,18 +152,8 @@
     - !type:DepartmentTimeRequirement
       department: Command
       time: 7200 #2 hrs # Amour
-    - !type:SpeciesRequirement # Amour
-      species:
-      - Human
-      - Felinid
-      - IPC
-      - Dwarf
-      - Harpy
-      - Tajaran
-      - Vulpkanin
-      - Arachnid
-      - SlimePerson
-      - Plasmaman
+    - !type:AgeRequirement # Amour
+      requiredAge: 23
 #  guides: # goobstation | Orion-Edit: Removed because dont have this SOP
 #  - Command
 #  - Succession

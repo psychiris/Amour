@@ -143,15 +143,8 @@
     - !type:DepartmentTimeRequirement
       department: Engineering
       time: 18000 #5 hrs # Amour
-    - !type:SpeciesRequirement # Amour
-      species:
-      - Human
-      - Chitinid
-      - IPC
-      - Diona
-      - Dwarf
-      - SlimePerson
-      - Plasmaman
+    - !type:AgeRequirement # Amour
+      requiredAge: 23
   weight: 10
   startingGear: ChiefEngineerGear
   icon: "JobIconChiefEngineer"

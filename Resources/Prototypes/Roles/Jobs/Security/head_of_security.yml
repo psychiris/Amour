@@ -151,14 +151,13 @@
     - !type:DepartmentTimeRequirement
       department: Security
       time: 18000 #5 hrs # Amour
+    - !type:AgeRequirement # Amour
+      requiredAge: 23
     - !type:SpeciesRequirement # Amour
+      inverted: true
       species:
-      - Human
-      - Chitinid
-      - Yowie
-      - Dwarf
-      - SlimePerson
-      - Reptilian
+      - Felinid
+      - Resomi
   #  - !type:StyleRequirement
   #    styles:
   #    - HumanHairFloorlengthBedhead
