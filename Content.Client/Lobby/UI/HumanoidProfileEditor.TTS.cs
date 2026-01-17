@@ -5,6 +5,7 @@
 using Content.Client._Amour.TTS;
 using Content.Shared._Amour.TTS;
 using Content.Shared.Humanoid;
+using Robust.Client.UserInterface.Controls;
 using System.Linq;
 
 namespace Content.Client.Lobby.UI;
@@ -12,7 +13,9 @@ namespace Content.Client.Lobby.UI;
 public sealed partial class HumanoidProfileEditor
 {
     private List<TTSVoicePrototype> _ttsPrototypes = new();
-    private TTSVoiceOptionButton? _ttsVoiceButton;
+    private Button? _ttsVoiceButton;
+    private TTSVoiceMenu? _ttsVoiceMenu;
+    private TTSVoicePrototype? _selectedTTSVoice;
 
     private void InitializeTTSVoice()
     {
@@ -30,9 +33,11 @@ public sealed partial class HumanoidProfileEditor
             }
         }
 
-        _ttsVoiceButton = new TTSVoiceOptionButton
+        _ttsVoiceButton = new Button
         {
-            HorizontalAlignment = TTSVoiceButton.HorizontalAlignment
+            HorizontalAlignment = TTSVoiceButton.HorizontalAlignment,
+            HorizontalExpand = true,
+            Text = Loc.GetString("humanoid-profile-editor-tts-voice-button-select")
         };
 
         if (index >= 0)
@@ -42,13 +47,40 @@ public sealed partial class HumanoidProfileEditor
             _ttsVoiceButton.SetPositionInParent(index);
         }
 
-        _ttsVoiceButton.OnItemSelected += args =>
+        _ttsVoiceButton.OnPressed += _ => OpenTTSVoiceMenu();
+        TTSVoicePlayButton.OnPressed += _ => PlayPreviewTTS();
+    }
+
+    private void OpenTTSVoiceMenu()
+    {
+        if (_ttsVoiceMenu is { IsOpen: true })
         {
-            _ttsVoiceButton.SelectId(args.Id);
-            SetTTSVoice(_ttsPrototypes[args.Id]);
+            _ttsVoiceMenu.Close();
+            return;
+        }
+
+        _ttsVoiceMenu?.Dispose();
+        _ttsVoiceMenu = new TTSVoiceMenu();
+
+        _ttsVoiceMenu.OnVoiceSelected += voice =>
+        {
+            _selectedTTSVoice = voice;
+            SetTTSVoice(voice);
+            UpdateTTSVoiceButtonText();
         };
 
-        TTSVoicePlayButton.OnPressed += _ => PlayPreviewTTS();
+        _ttsVoiceMenu.OnVoicePreview += voice =>
+        {
+            var ttsSystem = _entManager.System<TTSSystem>();
+            ttsSystem.RequestGlobalTTS(VoiceRequestType.Preview, voice.ID);
+        };
+
+        if (_selectedTTSVoice != null)
+        {
+            _ttsVoiceMenu.SetSelectedVoice(_selectedTTSVoice.ID);
+        }
+
+        _ttsVoiceMenu.OpenCentered();
     }
 
     private void UpdateTTSVoice()
@@ -56,41 +88,50 @@ public sealed partial class HumanoidProfileEditor
         if (Profile is null || _ttsVoiceButton is null)
             return;
 
-        var profileSex = Profile.Sex;
-
         _ttsPrototypes = _prototypeManager
             .EnumeratePrototypes<TTSVoicePrototype>()
             .Where(o => o.RoundStart)
-            .OrderBy(o => o.Sex == profileSex ? 0 : (o.Sex == Sex.Unsexed ? 1 : 2))
-            .ThenBy(o => Loc.GetString(o.Name))
+            .OrderBy(o => Loc.GetString(o.Name))
             .ToList();
 
-        _ttsVoiceButton.Clear();
+        _selectedTTSVoice = _ttsPrototypes.FirstOrDefault(v => v.ID == Profile.Voice)
+                           ?? _ttsPrototypes.FirstOrDefault();
 
-        var selectedTTSId = -1;
-        for (var i = 0; i < _ttsPrototypes.Count; i++)
+        if (_selectedTTSVoice != null)
         {
-            var voice = _ttsPrototypes[i];
-            if (voice.ID == Profile.Voice)
-                selectedTTSId = i;
-
-            _ttsVoiceButton.AddVoiceItem(Loc.GetString(voice.Name), voice.Sex, i);
+            SetTTSVoice(_selectedTTSVoice);
         }
 
-        if (selectedTTSId == -1)
-            selectedTTSId = 0;
+        UpdateTTSVoiceButtonText();
+    }
 
-        _ttsVoiceButton.SelectId(selectedTTSId);
-        if (_ttsPrototypes.Count > 0)
-            SetTTSVoice(_ttsPrototypes[selectedTTSId]);
+    private void UpdateTTSVoiceButtonText()
+    {
+        if (_ttsVoiceButton == null)
+            return;
+
+        if (_selectedTTSVoice != null)
+        {
+            var sexIcon = _selectedTTSVoice.Sex switch
+            {
+                Sex.Male => "♂",
+                Sex.Female => "♀",
+                _ => "⚥"
+            };
+            _ttsVoiceButton.Text = $"{sexIcon} {Loc.GetString(_selectedTTSVoice.Name)}";
+        }
+        else
+        {
+            _ttsVoiceButton.Text = Loc.GetString("humanoid-profile-editor-tts-voice-button-select");
+        }
     }
 
     private void PlayPreviewTTS()
     {
-        if (Profile is null)
+        if (Profile is null || _selectedTTSVoice is null)
             return;
 
         var ttsSystem = _entManager.System<TTSSystem>();
-        ttsSystem.RequestGlobalTTS(VoiceRequestType.Preview, Profile.Voice);
+        ttsSystem.RequestGlobalTTS(VoiceRequestType.Preview, _selectedTTSVoice.ID);
     }
 }

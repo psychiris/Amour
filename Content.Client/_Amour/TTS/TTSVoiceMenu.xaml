@@ -1,0 +1,41 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-or-later -->
+<DefaultWindow xmlns="https://spacestation14.io"
+               Title="{Loc 'humanoid-profile-editor-tts-voice-menu-title'}"
+               MinSize="400 500"
+               SetSize="450 600">
+    <BoxContainer Orientation="Vertical" Margin="5">
+        <!-- Search -->
+        <BoxContainer Orientation="Horizontal" Margin="0 0 0 5">
+            <LineEdit Name="SearchLineEdit"
+                      PlaceHolder="{Loc 'humanoid-profile-editor-tts-voice-menu-search'}"
+                      HorizontalExpand="True" />
+        </BoxContainer>
+
+        <!-- Filters -->
+        <BoxContainer Orientation="Horizontal" Margin="0 0 0 5" HorizontalExpand="True">
+            <!-- Sex Filter -->
+            <BoxContainer Orientation="Vertical" HorizontalExpand="True" Margin="0 0 5 0">
+                <Label Text="{Loc 'humanoid-profile-editor-tts-voice-menu-sex-filter'}" />
+                <OptionButton Name="SexFilterButton" HorizontalExpand="True" />
+            </BoxContainer>
+
+            <!-- Source Filter -->
+            <BoxContainer Orientation="Vertical" HorizontalExpand="True">
+                <Label Text="{Loc 'humanoid-profile-editor-tts-voice-menu-source-filter'}" />
+                <OptionButton Name="SourceFilterButton" HorizontalExpand="True" />
+            </BoxContainer>
+        </BoxContainer>
+
+        <!-- Voice List -->
+        <ScrollContainer VerticalExpand="True" HorizontalExpand="True" HScrollEnabled="False">
+            <ItemList Name="VoiceList" VerticalExpand="True" HorizontalExpand="True" />
+        </ScrollContainer>
+
+        <!-- Preview Button -->
+        <BoxContainer Orientation="Horizontal" Margin="0 5 0 0">
+            <Button Name="PreviewButton"
+                    Text="{Loc 'humanoid-profile-editor-tts-voice-menu-preview'}"
+                    HorizontalExpand="True" />
+        </BoxContainer>
+    </BoxContainer>
+</DefaultWindow>

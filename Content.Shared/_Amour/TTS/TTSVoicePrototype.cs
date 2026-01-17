@@ -28,4 +28,10 @@ public sealed partial class TTSVoicePrototype : IPrototype
     /// </summary>
     [DataField("roundStart")]
     public bool RoundStart { get; } = true;
+
+    /// <summary>
+    /// Source/origin of the voice (e.g., game, media, etc.)
+    /// </summary>
+    [DataField("source")]
+    public string Source { get; } = string.Empty;
 }
