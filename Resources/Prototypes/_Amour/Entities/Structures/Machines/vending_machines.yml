@@ -4,6 +4,8 @@
   name: Kink`o`Mat
   description: A vending machine for all your unmentionable desires.
   components:
+    - type: StaticPrice
+      price: 500
     - type: VendingMachine
       pack: KinkMachineInventory
       dispenseOnHitChance: 0.25
