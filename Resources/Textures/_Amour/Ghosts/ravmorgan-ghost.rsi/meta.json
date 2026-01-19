@@ -1,15 +1,18 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
+<<<<<<<< HEAD:Resources/Textures/_Amour/Ghosts/ravmorgan-ghost.rsi/meta.json
   "copyright": "Amour",
+========
+  "copyright": "Sprited by UmbiMax",
+>>>>>>>> upstream/master:Resources/Textures/_Orion/Objects/Devices/unique_teleporters.rsi/meta.json
   "size": {
     "x": 32,
     "y": 32
   },
   "states": [
     {
-      "name": "animated",
-      "directions": 4
+      "name": "security"
     }
   ]
 }
